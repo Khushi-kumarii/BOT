@@ -1,0 +1,350 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.App.app-light {
+  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+}
+
+.App.app-dark {
+  background: #3b3b4d; 
+}
+
+/* Chat container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  max-width: 90%;
+  height: 600px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: #fff;
+}
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: relative;      
+  padding: 15px;
+  background: linear-gradient(90deg, #4b6cb7, #182848);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+/* Messages container */
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f0f2f5;
+  scroll-behavior: smooth;
+}
+
+/* Chat input container */
+.chat-input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+/* Input box */
+.chat-input-container input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.chat-input-container input:focus {
+  border-color: #4b6cb7;
+  box-shadow: 0 0 5px rgba(75,108,183,0.5);
+}
+
+/* Send button */
+.chat-input-container button {
+  margin-left: 10px;
+  padding: 12px 20px;
+  border: none;
+  background: #4b6cb7;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.chat-input-container button:hover {
+  background: #182848;
+}
+
+/* Individual chat message */
+.chat-message {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease;
+}
+
+/* User messages align right */
+.chat-message.user {
+  align-items: flex-end;
+}
+
+/* AI messages align left */
+.chat-message.ai {
+  align-items: flex-start;
+}
+/* Chat container */
+.chat-container.light {
+  background: #f0f2f5;
+  color: #000;
+}
+
+.chat-container.dark {
+  background: #1e1e2f;
+  color: #fff;
+}
+
+/* Messages container */
+.chat-container.light .chat-messages {
+  background: #f0f2f5;
+}
+
+.chat-container.dark .chat-messages {
+  background: #2b2b3d;
+}
+
+.input-light {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+.input-dark {
+  background: #3b3b4d;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Send button */
+.btn-light {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.btn-light:hover {
+  background: #182848;
+}
+
+.btn-dark {
+  background: #6b7dcf;
+  color: #fff;
+}
+
+.btn-dark:hover {
+  background: #4b6cb7;
+}
+.message-icon{
+  margin-right: 6px;
+  font-size: 18px;
+}
+/* Message bubbles */
+.chat-message.user .message-content.light-msg {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.chat-message.user .message-content.dark-msg {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.chat-message.ai .message-content.light-msg {
+  background: #e4e6eb;
+  color: #000;
+}
+
+.chat-message.ai .message-content.dark-msg {
+  background: #3b3b4d;
+  color: #fff;
+}
+
+.chat-container.light .mode-toggle {
+  background: #f0f0f0;
+  color: #000;
+}
+
+.chat-container.dark .mode-toggle {
+  background: #4b4b66;
+  color: #fff;
+}
+/* Input container light/dark */
+.input-container-light {
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.input-container-dark {
+  background: #2b2b3d;
+  border-top: 1px solid #555;
+}
+
+/* Input boxes */
+.input-light {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+.input-dark {
+  background: #3b3b4d;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Send button */
+.btn-light {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.btn-light:hover {
+  background: #182848;
+}
+
+.btn-dark {
+  background: #6b7dcf;
+  color: #fff;
+}
+
+.btn-dark:hover {
+  background: #4b6cb7;
+}
+
+.mode-toggle {
+  position: absolute;
+  right: 15px; 
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.chat-container.light .mode-toggle {
+  background: #f0f0f0;
+  color: #000;
+}
+
+.chat-container.dark .mode-toggle {
+  background: #4b4b66;
+  color: #fff;
+}
+
+/* Message bubble */
+.message-content {
+  max-width: 75%;
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: #e4e6eb;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+/* User bubble */
+.chat-message.user .message-content {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+/* Timestamp */
+.message-time {
+  font-size: 10px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.typing-indicator .dot {
+  width: 8px;
+  height: 8px;
+  background: #4b6cb7;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.typing-indicator .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-indicator .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.typing-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.typing-text {
+  font-size: 0.9rem;
+  color: #4b6cb7;
+  font-weight: 500;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); opacity: 0.5; }
+  100% { transform: translateY(-6px); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .chat-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .chat-header {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .chat-input-container input {
+    font-size: 0.9rem;
+  }
+
+  .chat-input-container button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
