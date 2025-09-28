@@ -6,7 +6,6 @@ const ChatMessage = require('../models/ChatMessage');
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
-// Helper function to call Gemini with retries
 async function callGeminiAPI(message, retries = 3, delay = 1000) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
@@ -28,7 +27,7 @@ async function callGeminiAPI(message, retries = 3, delay = 1000) {
       }
     }
   }
-  return null; // all retries failed
+  return null; 
 }
 
 // POST /api/chat
@@ -42,7 +41,7 @@ router.post('/', async (req, res) => {
     // Save user message
     await ChatMessage.create({ sessionId, role: 'user', content: message });
 
-    let aiText = `Echo: ${message}`; // fallback
+    let aiText = `Echo: ${message}`; 
 
     try {
       const geminiResponse = await callGeminiAPI(message);
@@ -61,7 +60,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/chat/history/:sessionId
+// GET api chat-history
 router.get('/history/:sessionId', async (req, res) => {
   try {
     const { sessionId } = req.params;
