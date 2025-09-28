@@ -7,7 +7,23 @@ const chatRoutes = require('./routes/chat');
 const app = express();
 
 // CORS setup
-app.use(cors({ origin: 'http://localhost:3000' })); // React dev server
+const allowedOrigins = [
+  'http://localhost:3000', // local dev
+  'https://bot-git-main-khushis-projects-8283f7f1.vercel.app' // deployed frontend
+];
+
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin (like Postman)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+
 app.use(express.json());
 
 // Health check
@@ -24,7 +40,7 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
 }).then(() => {
   console.log('✅ Connected to MongoDB');
-  app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 }).catch(err => {
   console.error('❌ MongoDB connection failed:', err);
 });
